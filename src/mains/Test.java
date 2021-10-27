@@ -37,20 +37,29 @@ public class Test {
     }
     
     
-    private static String[] leerFichero(String nomFit)  throws IOException {
-		String[] numeros;
-		int i, linias;	
+       private static String[] leerFichero(String nomFit)  throws IOException {
+		String[] numeros, aux;
+		int i, linias, nums=0, j=0;	
+	    String texto;
 		
 			try {
 				BufferedReader  f = new BufferedReader(new FileReader(nomFit));
 				linias = (int)f.lines().count();
 				f.close();
 				Scanner ft=new Scanner(new File(nomFit));
-				numeros = new String[linias];
+				aux = new String[linias];
 				for (i=0;i<linias;i++){
-					numeros[i]=ft.nextLine();
+				   texto=ft.nextLine(); 
+				   if (texto!=null & texto != "" ) {
+					   aux[j]=texto;
+				       j++;
+					   nums++;
+				   }
 				}
 				ft.close();
+				
+				numeros = new String[nums];
+				for (i=0;i<nums;i++) {numeros[i]=aux[i]; System.out.println(numeros[i]);}
 				return numeros;	
 				
 			}catch (IOException e){
