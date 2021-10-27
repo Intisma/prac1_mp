@@ -13,5 +13,6 @@ public interface AnalisisPrimo {
     void encontrarPrimoMayor();
 
     String toString();
-
+    
+    String toStringFichero();
 }
