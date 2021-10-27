@@ -73,5 +73,9 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
     public String toString() {
         return "\nNumero entrada: " + num + " \nNumero primo: " + primoResult + "\nTiempo: " + tiempo + "ms\n";
     }
+    
+    public String toStringFichero() {
+        return num + ";" + primoResult + ";" + tiempo + "\n";
+    }
 
 }
