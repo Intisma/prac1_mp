@@ -59,7 +59,7 @@ public class Test {
 				ft.close();
 				
 				numeros = new String[nums];
-				for (i=0;i<nums;i++) {numeros[i]=aux[i]; System.out.println(numeros[i]);}
+				for (i=0;i<nums;i++) numeros[i]=aux[i];
 				return numeros;	
 				
 			}catch (IOException e){
