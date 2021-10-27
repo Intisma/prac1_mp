@@ -75,7 +75,7 @@ public class Test {
 		
 			BufferedWriter fresul=new BufferedWriter(new FileWriter(nomFit));
 
-			fresul.write("Numero;Primo;Tiempo\n");
+			fresul.write("Numero;Primo;Tiempo(ms)\n");
 			fresul.write(gestor.toStringFichero());
 			fresul.close();
 				
