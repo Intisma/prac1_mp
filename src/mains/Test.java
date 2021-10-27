@@ -17,11 +17,22 @@ public class Test {
     public static void main(String[] args) throws IOException {
       
     	System.out.println("Ejecutando primer test...");
-    	String[] test1 = leerFichero("fichero.txt");
-        GestionPrimos gestor = new GestionPrimos(test1);
-        gestor.procesarPrimos();
-        System.out.println(gestor);
-        escribirFichero(gestor,"ficheroSalida1.csv");
+    	String[] test1 = leerFichero("test1.txt");
+    	if (test1 != null) {
+    		GestionPrimos gestor = new GestionPrimos(test1);
+    		gestor.procesarPrimos();
+    		System.out.println(gestor);
+    		escribirFichero(gestor,"ficheroSalida1.csv");
+    	}
+    	
+    	System.out.println("Ejecutando segundo test...");
+    	String[] test2 = leerFichero("fichero.txt");
+    	if (test2 != null) {
+    		GestionPrimos gestor = new GestionPrimos(test2);
+    		gestor.procesarPrimos();
+    		System.out.println(gestor);
+    		escribirFichero(gestor,"ficheroSalida2.csv");
+    	}
         
     }
     
@@ -29,18 +40,25 @@ public class Test {
     private static String[] leerFichero(String nomFit)  throws IOException {
 		String[] numeros;
 		int i, linias;	
-			
-		    BufferedReader  f = new BufferedReader(new FileReader(nomFit));
-		    linias = (int)f.lines().count();
-		    f.close();
-		    Scanner ft=new Scanner(new File(nomFit));
-			numeros = new String[linias];
-			for (i=0;i<linias;i++){
-				numeros[i]=ft.nextLine();
+		
+			try {
+				BufferedReader  f = new BufferedReader(new FileReader(nomFit));
+				linias = (int)f.lines().count();
+				f.close();
+				Scanner ft=new Scanner(new File(nomFit));
+				numeros = new String[linias];
+				for (i=0;i<linias;i++){
+					numeros[i]=ft.nextLine();
+				}
+				ft.close();
+				return numeros;	
+				
+			}catch (IOException e){
+				System.out.println("Error!! Fichero no existe");
+				return null;
+				
 			}
-			ft.close();
 			
-			return numeros;	
 	}
 
 
