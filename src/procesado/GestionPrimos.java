@@ -31,4 +31,12 @@ public class GestionPrimos {
         }
         return total.toString();
     }
+    
+    public String toStringFichero() {
+        StringBuilder total = new StringBuilder();
+        for (AnalisisPrimo num : numeros) {
+            total.append(num.toStringFichero());
+        }
+        return total.toString();
+    }
 }
