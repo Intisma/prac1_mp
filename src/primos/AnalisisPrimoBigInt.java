@@ -6,32 +6,31 @@ public class AnalisisPrimoBigInt implements AnalisisPrimo {
     private final BigInteger num;
     private BigInteger primoResult;
     private long tiempo;
-    private boolean esPar, primoEncontrado;
 
+    /**
+     * Constructor
+     *
+     * @param num número a guardar en la variable num
+     */
     public AnalisisPrimoBigInt(String num) {
         this.num = new BigInteger(num);
     }
 
-    public String getNum() {
-        return "" + num;
+    /**
+     * Comprueba si el número es par
+     *
+     * @return booleano que indica si es par o no
+     */
+    private boolean esPar() {
+        return (num.mod(BigInteger.TWO).equals(BigInteger.ZERO));
     }
 
-    public String getPrimoResult() {
-        return "" + primoResult;
-    }
-
-    public String getTiempo() {
-        return "" + tiempo;
-    }
-
-    public boolean getPrimoEncontrado() {
-        return primoEncontrado;
-    }
-
-    private void esPar() {
-        esPar = num.mod(BigInteger.TWO).equals(BigInteger.ZERO);
-    }
-
+    /**
+     * Comprueba si el número introducido por parámetro es primo
+     *
+     * @param num número a comprobar si es primo
+     * @return booleano indicando si el número es o no primo
+     */
     private boolean esPrimo(BigInteger num) {
         boolean primo = true;
         BigInteger max = num.sqrt();
@@ -53,11 +52,14 @@ public class AnalisisPrimoBigInt implements AnalisisPrimo {
         return primo;
     }
 
+    /**
+     * Se busca el número primo más grande que sea menor o igual al número que se encuentra
+     * en la variable num. Una vez encontrado, se guarda en la variable primoResult
+     */
     public void encontrarPrimoMayor() {
         long tiempoInicio = System.currentTimeMillis();
-        primoEncontrado = false;
-        this.esPar();
-        if (!esPar)
+        boolean primoEncontrado = false;
+        if (!this.esPar())
             primoResult = num;
         else
             primoResult = num.subtract(BigInteger.ONE);
@@ -72,10 +74,20 @@ public class AnalisisPrimoBigInt implements AnalisisPrimo {
         tiempo = tiempoFinal - tiempoInicio;
     }
 
+    /**
+     * Transforma el objeto a formato string para mostrarlo por pantalla
+     *
+     * @return string con la información del objeto en formato pantalla
+     */
     public String toString() {
         return "\nNumero entrada: " + num + " \nNumero primo: " + primoResult + "\nTiempo: " + tiempo + "ms\n";
     }
-    
+
+    /**
+     * Transforma el objeto a formato string para escribirlo en ficheros csv
+     *
+     * @return string con la información del objeto en formato csv
+     */
     public String toStringFichero() {
         return num + ";" + primoResult + ";" + tiempo + "\n";
     }

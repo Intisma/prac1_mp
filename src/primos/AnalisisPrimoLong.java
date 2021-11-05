@@ -4,32 +4,32 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
     private final long num;
     private long primoResult;
     private long tiempo;
-    private boolean esPar, primoEncontrado;
 
+    /**
+     * Constructor
+     *
+     * @param num número a guardar en la variable num
+     */
     public AnalisisPrimoLong(String num) {
         this.num = Long.parseLong(num);
     }
 
-    public String getNum() {
-        return "" + num;
+
+    /**
+     * Comprueba si el número es par
+     *
+     * @return booleano que indica si es par o no
+     */
+    private boolean esPar() {
+        return (num % 2 == 0);
     }
 
-    public String getPrimoResult() {
-        return "" + primoResult;
-    }
-
-    public String getTiempo() {
-        return "" + tiempo;
-    }
-
-    public boolean getPrimoEncontrado() {
-        return primoEncontrado;
-    }
-
-    private void esPar() {
-        esPar = num % 2 == 0;
-    }
-
+    /**
+     * Comprueba si el número introducido por parámetro es primo
+     *
+     * @param num número a comprobar si es primo
+     * @return booleano indicando si el número es o no primo
+     */
     private boolean esPrimo(long num) {
         boolean primo = true;
         long max = (long) Math.sqrt(num);
@@ -51,11 +51,14 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
         return primo;
     }
 
+    /**
+     * Se busca el número primo más grande que sea menor o igual al número que se encuentra
+     * en la variable num. Una vez encontrado, se guarda en la variable primoResult
+     */
     public void encontrarPrimoMayor() {
         long tiempoInicio = System.currentTimeMillis();
-        primoEncontrado = false;
-        this.esPar();
-        if (!esPar)
+        boolean primoEncontrado = false;
+        if (!this.esPar())
             primoResult = num;
         else
             primoResult = num - 1;
@@ -70,10 +73,20 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
         tiempo = tiempoFinal - tiempoInicio;
     }
 
+    /**
+     * Transforma el objeto a formato string para mostrarlo por pantalla
+     *
+     * @return string con la información del objeto en formato pantalla
+     */
     public String toString() {
         return "\nNumero entrada: " + num + " \nNumero primo: " + primoResult + "\nTiempo: " + tiempo + "ms\n";
     }
-    
+
+    /**
+     * Transforma el objeto a formato string para escribirlo en ficheros csv
+     *
+     * @return string con la información del objeto en formato csv
+     */
     public String toStringFichero() {
         return num + ";" + primoResult + ";" + tiempo + "\n";
     }

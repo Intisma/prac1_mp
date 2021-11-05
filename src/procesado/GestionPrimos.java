@@ -7,6 +7,12 @@ import primos.AnalisisPrimoLong;
 public class GestionPrimos {
     private final AnalisisPrimo[] numeros;
 
+    /**
+     * Constructor
+     *
+     * @param numeros es un string con el cuál llenaremos la variable numeros (vector de AnalisisPrimo). Crearemos
+     *                un AnalisisPrimoLong o AnalisisPrimoBigInt según el tamaño del número del String
+     */
     public GestionPrimos(String[] numeros) {
         int size = numeros.length;
         this.numeros = new AnalisisPrimo[size];
@@ -18,12 +24,22 @@ public class GestionPrimos {
         }
     }
 
+    /**
+     * Se encarga de recorrer la lista de AnalisisPrimo y encontrar el número primo mayor, menor o igual al número
+     * que hay en estas variables.
+     */
     public void procesarPrimos() {
         for (AnalisisPrimo num : numeros) {
             num.encontrarPrimoMayor();
         }
     }
 
+    /**
+     * Crea un String con la información de todas las variables de la lista de AnalisisPrimo para mostrar por
+     * pantalla.
+     *
+     * @return string con la información de numeros
+     */
     public String toString() {
         StringBuilder total = new StringBuilder();
         for (AnalisisPrimo num : numeros) {
@@ -31,7 +47,13 @@ public class GestionPrimos {
         }
         return total.toString();
     }
-    
+
+    /**
+     * Crea un String con la información de todas las variables de la lista de AnalisisPrimo para escribir en
+     * un fichero CSV
+     *
+     * @return string con la información de numeros en formato CSV
+     */
     public String toStringFichero() {
         StringBuilder total = new StringBuilder();
         for (AnalisisPrimo num : numeros) {
