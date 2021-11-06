@@ -50,7 +50,7 @@ public class AdministradorEntradaSalida {
 
     /**
      * Escribe la información almacenada en un objeto de clase GestionPrimos en un fichero nuevo que tendrá
-     * el nombre introducido por parámetro.
+     * el nombre introducido por parámetro
      *
      * @param gestor     será el parámetro del que obtendremos la información a escribir
      * @param nomFichero será el nombre que tomará el fichero en el que escribamos
