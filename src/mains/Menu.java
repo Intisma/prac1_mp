@@ -15,6 +15,11 @@ public class Menu {
 
     static Scanner teclado = new Scanner(System.in);
 
+    /**
+     * Main para tener un menu desde el que poder probar las funcionalidades del programa
+     *
+     * @param args no usados
+     */
     public static void main(String[] args) {
         int opcion;
         do {
