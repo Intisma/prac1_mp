@@ -4,6 +4,8 @@ import primos.AnalisisPrimo;
 import primos.AnalisisPrimoBigInt;
 import primos.AnalisisPrimoLong;
 
+import java.math.BigInteger;
+
 public class GestionPrimos {
     private final AnalisisPrimo[] numeros;
 
@@ -15,12 +17,19 @@ public class GestionPrimos {
      */
     public GestionPrimos(String[] numeros) {
         int size = numeros.length;
+        BigInteger comprobarLong;
         this.numeros = new AnalisisPrimo[size];
         for (int indice = 0; indice < size; indice++) {
             if (numeros[indice].length() < 19)
                 this.numeros[indice] = new AnalisisPrimoLong(numeros[indice]);
-            else
-                this.numeros[indice] = new AnalisisPrimoBigInt(numeros[indice]);
+            else {
+                comprobarLong = new BigInteger(numeros[indice]);
+                if (comprobarLong.compareTo(new BigInteger("9223372036854775807")) > 0)
+                    this.numeros[indice] = new AnalisisPrimoBigInt(numeros[indice]);
+                else
+                    this.numeros[indice] = new AnalisisPrimoLong(numeros[indice]);
+
+            }
         }
     }
 

@@ -25,50 +25,28 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
     }
 
     /**
-     * Comprueba si el número introducido por parámetro es primo
-     *
-     * @param num número a comprobar si es primo
-     * @return booleano indicando si el número es o no primo
-     */
-    private boolean esPrimo(long num) {
-        boolean primo = true;
-        long max = (long) Math.sqrt(num);
-        if (num == 0 || num == 1)
-            primo = false;
-        else if (num != 2) {
-            if (num % 2 == 0)
-                primo = false;
-            else {
-                for (int i = 3; i <= max; i += 2) {
-                    if (num % i == 0) {
-                        primo = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return primo;
-    }
-
-    /**
      * Se busca el número primo más grande que sea menor o igual al número que se encuentra
-     * en la variable num. Una vez encontrado, se guarda en la variable primoResult
+     * en la variable num. Una vez encontrado, se guarda en la variable primoResult. Si no
+     * se ha encontrado un primo menor o igual que el número de la variable num, se guardará 1
+     * en primo
      */
     public void encontrarPrimoMayor() {
         long tiempoInicio = System.currentTimeMillis();
         boolean primoEncontrado = false;
-        if (!this.esPar())
-            primoResult = num;
-        else
-            primoResult = num - 1;
+        if (num >= 2) {
+            if (!this.esPar() || num == 2)
+                primoResult = num;
+            else
+                primoResult = num - 1;
 
-        while ((primoResult > 1) && (!primoEncontrado)) {
-            primoEncontrado = this.esPrimo(primoResult);
-            if (!primoEncontrado)
-                primoResult -= 2;
+            while ((primoResult > 1) && (!primoEncontrado)) {
+                primoEncontrado = NumPrimo.esPrimo(primoResult);
+                if (!primoEncontrado)
+                    primoResult -= 2;
+            }
+        } else {
+            primoResult = 1;
         }
-
         long tiempoFinal = System.currentTimeMillis();
         tiempo = tiempoFinal - tiempoInicio;
     }
@@ -79,7 +57,7 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
      * @return string con la información del objeto en formato pantalla
      */
     public String toString() {
-        return "\nNumero entrada: " + num + " \nNumero primo: " + primoResult + "\nTiempo: " + tiempo + "ms\n";
+        return "\n\tNumero entrada: " + num + " \n\tNumero primo: " + primoResult + "\n\tTiempo: " + tiempo + "ms";
     }
 
     /**

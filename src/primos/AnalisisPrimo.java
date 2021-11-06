@@ -21,4 +21,5 @@ public interface AnalisisPrimo {
      * @return string con la información del objeto en formato csv
      */
     String toStringFichero();
+
 }

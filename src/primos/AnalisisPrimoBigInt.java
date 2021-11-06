@@ -26,50 +26,28 @@ public class AnalisisPrimoBigInt implements AnalisisPrimo {
     }
 
     /**
-     * Comprueba si el número introducido por parámetro es primo
-     *
-     * @param num número a comprobar si es primo
-     * @return booleano indicando si el número es o no primo
-     */
-    private boolean esPrimo(BigInteger num) {
-        boolean primo = true;
-        BigInteger max = num.sqrt();
-        if ((num.equals(BigInteger.ZERO)) || (num.equals(BigInteger.ONE)))
-            primo = false;
-        else if (!(num.equals(BigInteger.TWO))) {
-            if (num.mod(BigInteger.TWO).equals(BigInteger.ZERO))
-                primo = false;
-            else {
-                for (BigInteger i = new BigInteger("3"); i.compareTo(max) != 1; i = i.add(BigInteger.TWO)) {
-                    if (num.mod(i).equals(BigInteger.ZERO)) {
-                        primo = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return primo;
-    }
-
-    /**
      * Se busca el número primo más grande que sea menor o igual al número que se encuentra
-     * en la variable num. Una vez encontrado, se guarda en la variable primoResult
+     * en la variable num. Una vez encontrado, se guarda en la variable primoResult. Si no
+     * se ha encontrado un primo menor o igual que el número de la variable num, se guardará 1
+     * en primo
      */
     public void encontrarPrimoMayor() {
         long tiempoInicio = System.currentTimeMillis();
         boolean primoEncontrado = false;
-        if (!this.esPar())
-            primoResult = num;
-        else
-            primoResult = num.subtract(BigInteger.ONE);
+        if (num.compareTo(BigInteger.TWO) > -1) {
+            if (!this.esPar() || num.equals(BigInteger.TWO))
+                primoResult = num;
+            else
+                primoResult = num.subtract(BigInteger.ONE);
 
-        while ((primoResult.compareTo(BigInteger.ONE) == 1) && (!primoEncontrado)) {
-            primoEncontrado = this.esPrimo(primoResult);
-            if (!primoEncontrado)
-                primoResult = primoResult.subtract(BigInteger.TWO);
+            while ((primoResult.compareTo(BigInteger.ONE) > 0) && (!primoEncontrado)) {
+                primoEncontrado = NumPrimo.esPrimo(primoResult);
+                if (!primoEncontrado)
+                    primoResult = primoResult.subtract(BigInteger.TWO);
+            }
+        } else {
+            primoResult = new BigInteger("1");
         }
-
         long tiempoFinal = System.currentTimeMillis();
         tiempo = tiempoFinal - tiempoInicio;
     }
@@ -80,7 +58,7 @@ public class AnalisisPrimoBigInt implements AnalisisPrimo {
      * @return string con la información del objeto en formato pantalla
      */
     public String toString() {
-        return "\nNumero entrada: " + num + " \nNumero primo: " + primoResult + "\nTiempo: " + tiempo + "ms\n";
+        return "\n\tNumero entrada: " + num + " \n\tNumero primo: " + primoResult + "\n\tTiempo: " + tiempo + "ms";
     }
 
     /**
