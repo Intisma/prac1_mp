@@ -70,6 +70,8 @@ public class NumPrimo {
     public static boolean esPrimo2(BigInteger numero, int precision) {
         if (numero.compareTo(BigInteger.ONE) < 1)
             return false;
+        if (numero.mod(BigInteger.TWO).equals(BigInteger.ZERO) && (!numero.equals(BigInteger.TWO)))
+            return false;
         for (int i = 0; i < precision; i++) {
             BigInteger aleatorio;
             do {
@@ -90,6 +92,8 @@ public class NumPrimo {
      */
     public static boolean esPrimo2(BigInteger numero) {
         if (numero.compareTo(BigInteger.ONE) < 1)
+            return false;
+        if (numero.mod(BigInteger.TWO).equals(BigInteger.ZERO) && (!numero.equals(BigInteger.TWO)))
             return false;
         for (int i = 0; i < 20; i++) {
             BigInteger aleatorio;
@@ -114,6 +118,8 @@ public class NumPrimo {
         BigInteger numero = new BigInteger(Long.toString(lNumero));
         if (numero.compareTo(BigInteger.ONE) < 1)
             return false;
+        if (numero.mod(BigInteger.TWO).equals(BigInteger.ZERO) && (!numero.equals(BigInteger.TWO)))
+            return false;
         for (int i = 0; i < precision; i++) {
             BigInteger aleatorio;
             do {
@@ -135,6 +141,8 @@ public class NumPrimo {
     public static boolean esPrimo2(long lNumero) {
         BigInteger numero = new BigInteger(Long.toString(lNumero));
         if (numero.compareTo(BigInteger.ONE) < 1)
+            return false;
+        if (numero.mod(BigInteger.TWO).equals(BigInteger.ZERO) && (!numero.equals(BigInteger.TWO)))
             return false;
         for (int i = 0; i < 20; i++) {
             BigInteger aleatorio;
