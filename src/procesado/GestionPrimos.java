@@ -12,8 +12,8 @@ public class GestionPrimos {
     /**
      * Constructor
      *
-     * @param numeros es un string con el cuál llenaremos la variable numeros (vector de AnalisisPrimo). Crearemos
-     *                un AnalisisPrimoLong o AnalisisPrimoBigInt según el tamaño del número del String
+     * @param numeros es un string con el cual llenaremos la variable numeros (vector de AnalisisPrimo). Crearemos
+     *                un AnalisisPrimoLong o AnalisisPrimoBigInt segun el tamaño del numero del String
      */
     public GestionPrimos(String[] numeros) {
         int size = numeros.length;
@@ -34,7 +34,7 @@ public class GestionPrimos {
     }
 
     /**
-     * Se encarga de recorrer la lista de AnalisisPrimo y encontrar el número primo mayor, menor o igual al número
+     * Se encarga de recorrer la lista de AnalisisPrimo y encontrar el numero primo mayor, menor o igual al numero
      * que hay en estas variables.
      */
     public void procesarPrimos() {
@@ -44,10 +44,20 @@ public class GestionPrimos {
     }
 
     /**
-     * Crea un String con la información de todas las variables de la lista de AnalisisPrimo para mostrar por
+     * Nueva version del metodo procesarPrimos que se encarga de recorrer la lista de AnalisisPrimo y encontrar el numero
+     * primo mayor, menor o igual al numero que hay en estas variables, utilizando el test de Miller-Rabin.
+     */
+    public void procesarPrimos2() {
+        for (AnalisisPrimo num : numeros) {
+            num.encontrarPrimoMayor2();
+        }
+    }
+
+    /**
+     * Crea un String con la informacion de todas las variables de la lista de AnalisisPrimo para mostrar por
      * pantalla.
      *
-     * @return string con la información de numeros
+     * @return string con la informacion de numeros
      */
     public String toString() {
         StringBuilder total = new StringBuilder();
@@ -58,10 +68,10 @@ public class GestionPrimos {
     }
 
     /**
-     * Crea un String con la información de todas las variables de la lista de AnalisisPrimo para escribir en
+     * Crea un String con la informacion de todas las variables de la lista de AnalisisPrimo para escribir en
      * un fichero CSV
      *
-     * @return string con la información de numeros en formato CSV
+     * @return string con la informacion de numeros en formato CSV
      */
     public String toStringFichero() {
         StringBuilder total = new StringBuilder();

@@ -17,12 +17,12 @@ public class NumPrimo {
     public static boolean esPrimo(long num) {
         boolean primo = true;
         long max = (long) Math.sqrt(num);
-        if (num == 0 || num == 1)
+        if (num <= 1)
             primo = false;
         else if (num != 2) {
             if (num % 2 == 0)
                 primo = false;
-            else {
+            else{
                 for (int i = 3; i <= max; i += 2) {
                     if (num % i == 0) {
                         primo = false;
