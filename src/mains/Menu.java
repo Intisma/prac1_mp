@@ -1,13 +1,13 @@
 package mains;
 
 import administrarEntradaSalida.AdministradorEntradaSalida;
+import comparador.Comparador;
 import primos.AnalisisPrimo;
 import primos.AnalisisPrimoBigInt;
 import primos.AnalisisPrimoLong;
 import primos.NumPrimo;
 import procesado.GestionPrimos;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -189,6 +189,170 @@ public class Menu {
      * Se ejecuta un juego de pruebas
      */
     public static void juegoPruebas() {
+        AdministradorEntradaSalida gestorFicheros = new AdministradorEntradaSalida();
+
+        System.out.println("\n***********************************************");
+        System.out.println("\n\t\tJUEGOS DE PRUEBAS EN CURSO");
+        System.out.println("\n***********************************************\n");
+
+        /*Juegos de pruebas para comprobacion de ficheros*/
+        System.out.println("\n *********PRUEBAS GESTION DE FICHEROS*********\n");
+
+        //PRUEBA 1: Abrir fichero que no existe
+        System.out.println("\nPrueba 1: Lectura fichero que no existe.");
+        String[] numeros = gestorFicheros.leer("Prueba1.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba1Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+        else {
+            System.out.println("\t\tError, fichero no encontrado");
+        }
+        //PRUEBA 2: Abrir fichero vacio
+        System.out.println("\nPrueba2: Lectura fichero ");
+        numeros = gestorFicheros.leer("Prueba2.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba2Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //PRUEBA 3: Fichero con contenido incorrecto
+        System.out.println("\nPrueba3: Lectura fichero con contenido incorrecto");
+        numeros = gestorFicheros.leer("Prueba3.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba3Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //PRUEBA 4: Fichero con números negativos
+        System.out.println("\nPrueba4: Lectura fichero con números negativos ");
+        numeros = gestorFicheros.leer("Prueba4.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba4Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //PRUEBA 5: Abrir fichero con espacios intercalados
+        System.out.println("\nPrueba5: Lectura fichero con espacios intercalados.");
+        numeros = gestorFicheros.leer("Prueba5.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba5Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        /*Juegos de pruebas para comprobacion de funciones*/
+        System.out.println("\n *********PRUEBAS ANÁLISIS RESULTADOS*********\n");
+
+        System.out.println("---> PRUEBAS CON MÉTODO 1 esPrimo()");
+        //PRUEBA 6: Abrir fichero con todos los números de tipo long
+        System.out.println("\nPrueba6: Lectura fichero con numeros de tipo long.");
+        numeros = gestorFicheros.leer("Prueba6.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba6Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+        //PRUEBA 7: Abrir fichero con todos los números de tipo bigInteger
+        System.out.println("\nPrueba7: Lectura fichero con numeros de tipo BigInteger.");
+        numeros = gestorFicheros.leer("Prueba7.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba7Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+        //PRUEBA 8: Realizar fichero mixto (long + bigInteger)
+        System.out.println("\nPrueba8: Lectura fichero con numeros long + BigInteger.");
+        numeros = gestorFicheros.leer("Prueba8.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba8Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //Análisis de método 2 de encontrar primo
+        System.out.println("\n---> PRUEBAS CON MÉTODO 2 esPrimo()");
+        //PRUEBA 9: Abrir fichero con todos los números de tipo long
+        System.out.println("\nPrueba9: Lectura fichero con numeros de tipo long.");
+        numeros = gestorFicheros.leer("Prueba9.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos2();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba9Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+        //PRUEBA 10: Abrir fichero con todos los números de tipo bigInteger
+        System.out.println("\nPrueba10: Lectura fichero con numeros de tipo BigInteger.");
+        numeros = gestorFicheros.leer("Prueba10.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos2();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba10Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //PRUEBA 11: Realizar fichero mixto (long + bigInteger)
+        System.out.println("\nPrueba6: Lectura fichero con numeros long + BigInteger.");
+        numeros = gestorFicheros.leer("Prueba11.txt");
+        if (numeros!=null) {
+            GestionPrimos gestorPrimos = new GestionPrimos(numeros);
+            gestorPrimos.procesarPrimos2();
+            System.out.println(gestorPrimos);
+            if (gestorFicheros.escribir(gestorPrimos, "Prueba11Result.csv"))
+                System.out.println("\n\tTodo ha ido correctamente");
+
+            else
+                System.out.println("\n\tError al escribir en el fichero");
+        }
+
+        //*********************************************
+        //PRUEBA 12: Prueba para comparativas de tiempos con los dos algoritmos de encontrarPrimo
+        System.out.println("\n---> PRUEBA FUNCION COMPARATIVA");
+        System.out.println("\nPrueba12: Comparativa tiempos para ambos algoritmos de encontrarPrimo.");
+        Comparador comp = new Comparador();
+        BigInteger num1 = new BigInteger("0");
+        BigInteger num2 = new BigInteger("265000");
+        boolean encontrado=comp.comparaTiempo(num1, num2, "Prueba12Result");
+
     }
 
 
