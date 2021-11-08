@@ -7,6 +7,9 @@ import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Clase enfocada en usar el Comparador de métodos esPrimo y esPrimo2
+ */
 public class Comparaciones {
 
     static Scanner teclado = new Scanner(System.in);

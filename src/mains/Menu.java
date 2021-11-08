@@ -13,6 +13,9 @@ import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Clase enfocada en el uso del programa general.
+ */
 public class Menu {
 
     static Scanner teclado = new Scanner(System.in);

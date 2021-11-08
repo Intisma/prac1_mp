@@ -6,7 +6,9 @@ import java.io.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-
+/**
+ * Clase encargada de administrar la entrada de datos por fichero y la salida de estos.
+ */
 public class AdministradorEntradaSalida {
 
     /**

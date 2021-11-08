@@ -2,6 +2,10 @@ package primos;
 
 import java.math.BigInteger;
 
+/**
+ * Clase que nos permite a partir de un numero calcular su primo mayor que sea inferior o igual al numero y nos calcula
+ * tambien el tiempo tardado.
+ */
 public class AnalisisPrimoBigInt implements AnalisisPrimo {
     private final BigInteger num;
     private BigInteger primoResult;

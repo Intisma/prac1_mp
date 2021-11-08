@@ -1,5 +1,9 @@
 package primos;
 
+/**
+ * Clase que nos permite a partir de un numero calcular su primo mayor que sea inferior o igual al numero y nos calcula
+ * tambien el tiempo tardado.
+ */
 public class AnalisisPrimoLong implements AnalisisPrimo {
     private final long num;
     private long primoResult;

@@ -3,6 +3,9 @@ package primos;
 import java.math.BigInteger;
 import java.util.Random;
 
+/**
+ * Clase estática para facilitar la comprobación de números primos en el proyecto.
+ */
 public class NumPrimo {
 
     // El generador de numeros aleatorios para el segundo metodo de comprobar si un numero es primo

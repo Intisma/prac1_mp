@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 
+/**
+ * Clase enfocada en la comparación de métodos de comprobar si un número es primo.
+ */
 public class Comparador {
 
     /**

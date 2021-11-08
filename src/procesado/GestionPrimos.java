@@ -6,6 +6,9 @@ import primos.AnalisisPrimoLong;
 
 import java.math.BigInteger;
 
+/**
+ * Clase enfocada en la gestión de datos introducidos por fichero, procesado de estos y escritura de los resultados.
+ */
 public class GestionPrimos {
     private final AnalisisPrimo[] numeros;
 

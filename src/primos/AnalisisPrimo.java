@@ -1,5 +1,8 @@
 package primos;
 
+/**
+ * Interfaz que nos permitirá tratar indistintamente BigIntegers y longs
+ */
 public interface AnalisisPrimo {
 
     /**
