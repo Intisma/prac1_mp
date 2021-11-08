@@ -63,6 +63,7 @@ public class GestionPrimos {
         StringBuilder total = new StringBuilder();
         for (AnalisisPrimo num : numeros) {
             total.append(num.toString());
+            total.append("\n");
         }
         return total.toString();
     }

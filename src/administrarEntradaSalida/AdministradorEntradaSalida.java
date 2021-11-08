@@ -33,7 +33,7 @@ public class AdministradorEntradaSalida {
             int i;
             for (i = 0; i < numLineas; i++) {
                 String texto = ft.nextLine();
-                if (texto != null & !Objects.equals(texto, "")) {
+                if (texto != null & !Objects.equals(texto, "") && (texto.matches("[+-]?\\d*(\\.\\d+)?"))) {
                     aux[j] = texto;
                     j++;
                     nums++;
