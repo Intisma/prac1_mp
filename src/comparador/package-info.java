@@ -1,5 +1,5 @@
 /**
- * Provee de funciones para poder comparar dos métodos distintos utilizados para la comprobación de si un número
+ * Provee de funciones para poder comparar dos metodos distintos utilizados para la comprobacion de si un numero
  * es primo.
  */
 
