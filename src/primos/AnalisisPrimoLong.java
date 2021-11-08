@@ -52,6 +52,33 @@ public class AnalisisPrimoLong implements AnalisisPrimo {
     }
 
     /**
+     * Sobrecarga de encontrarPrimoMayor. Se busca el número primo más grande que sea menor o igual
+     * al número que se encuentra en la variable num. Una vez encontrado, se guarda en la variable primoResult.
+     * Si no se ha encontrado un primo menor o igual que el número de la variable num, se guardará 1
+     * en primo
+     */
+    public void encontrarPrimoMayor2() {
+        long tiempoInicio = System.currentTimeMillis();
+        boolean primoEncontrado = false;
+        if (num >= 2) {
+            if (!this.esPar() || num == 2)
+                primoResult = num;
+            else
+                primoResult = num - 1;
+
+            while ((primoResult > 1) && (!primoEncontrado)) {
+                primoEncontrado = NumPrimo.esPrimo2(primoResult);
+                if (!primoEncontrado)
+                    primoResult -= 2;
+            }
+        } else {
+            primoResult = 1;
+        }
+        long tiempoFinal = System.currentTimeMillis();
+        tiempo = tiempoFinal - tiempoInicio;
+    }
+
+    /**
      * Transforma el objeto a formato string para mostrarlo por pantalla
      *
      * @return string con la información del objeto en formato pantalla

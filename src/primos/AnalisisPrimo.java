@@ -9,6 +9,14 @@ public interface AnalisisPrimo {
     void encontrarPrimoMayor();
 
     /**
+     * Sobrecarga del método encontrarPrimoMayor. Se busca el número primo más grande que sea menor o igual al número
+     * que se encuentra en la variable num. Una vez encontrado, se guarda en la variable primoResult. Si no
+     * se ha encontrado un primo menor o igual que el número de la variable num, se guardará 1
+     * en primo
+     */
+    void encontrarPrimoMayor2();
+
+    /**
      * Transforma el objeto a formato string para mostrarlo por pantalla
      *
      * @return string con la información del objeto en formato pantalla
