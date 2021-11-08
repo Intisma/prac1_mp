@@ -1,3 +1,0 @@
-	Primer método -> Tiempo: 21080ms || Primos encontrados: 316066
-
-	Segundo método -> Tiempo: 8996ms || Primos encontrados: 316066
