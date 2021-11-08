@@ -2,6 +2,7 @@ package mains;
 
 import comparador.Comparador;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -105,6 +106,8 @@ public class Comparaciones {
         String nomFichero = teclado.next();
         if (!Comparador.comparaTiempo(limInf, limSup, nomFichero))
             System.out.println("\t\tError en la escritura de fichero");
+
+        pausa();
     }
 
     /**
@@ -129,6 +132,21 @@ public class Comparaciones {
             System.out.println("\t\tError en la escritura de fichero");
         else
             System.out.println("\t\tEl número de errores del segundo método para este rango es: " + errores);
+
+        pausa();
+    }
+
+    /**
+     * El programa se pausa hasta que el usuario pulse la tecla enter
+     */
+    public static void pausa() {
+        System.out.println("\n\tPulsa \"ENTER\" para continuar...");
+        try {
+            if (System.in.read() == -1)
+                System.out.println("\t\tNo deberías haber escrito nada, no se ha guardado");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

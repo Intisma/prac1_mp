@@ -7,6 +7,7 @@ import primos.AnalisisPrimoLong;
 import primos.NumPrimo;
 import procesado.GestionPrimos;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -101,8 +102,12 @@ public class Menu {
      */
     public static void pausa() {
         System.out.println("\n\tPulsa \"ENTER\" para continuar...");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        try {
+            if (System.in.read() == -1)
+                System.out.println("\t\tNo deberías haber escrito nada, no se ha guardado");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
