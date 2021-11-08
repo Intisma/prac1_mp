@@ -10,11 +10,11 @@ import java.math.BigInteger;
 public class Comparador {
 
     /**
-     * Función que compara la eficiencia de encontrar primos del segundo método con una precisión por defecto de 20
+     * Funcion que compara la eficiencia de encontrar primos del segundo metodo con una precision por defecto de 20
      *
-     * @param limite número en el que parar de comprobar si se detectan el mismo número de primos
+     * @param limite numero en el que parar de comprobar si se detectan el mismo numero de primos
      * @param extra  frase extra añadida al nombre de fichero
-     * @return long con el total de números diferentes entre ambos métodos, si se devuelve -1, ha habido error al escribir en fichero
+     * @return long con el total de numeros diferentes entre ambos metodos, si se devuelve -1, ha habido error al escribir en fichero
      */
     public static long encontrarPrimos(BigInteger inicio, BigInteger limite, String extra) {
         BigInteger actual = inicio;
@@ -49,10 +49,10 @@ public class Comparador {
     }
 
     /**
-     * Función que compara el tiempo que tardan en detectar cuántos números primos hay desde el 0 al limite introducido
-     * por parámetro. Se compararan los metodos esPrimo y esPrimo2
+     * Funcion que compara el tiempo que tardan en detectar cuantos numeros primos hay desde el 0 al limite introducido
+     * por parametro. Se compararan los metodos esPrimo y esPrimo2
      *
-     * @param limite número en el que parar de comprobar si el número es primo
+     * @param limite numero en el que parar de comprobar si el numero es primo
      * @return true si todo ha salido bien, false si no se ha conseguido escribir en el fichero
      */
     public static boolean comparaTiempo(BigInteger inicio, BigInteger limite, String nomFichero) {
@@ -78,15 +78,15 @@ public class Comparador {
         }
         tiempoFinal = System.currentTimeMillis();
         long tiempoSegundo = tiempoFinal - tiempoInicio;
-        String resultado = ("\tPrimer método -> Tiempo: " + tiempoPrimer + "ms || Primos encontrados: " + totalPrimosPrimer + "\n\n\tSegundo método -> Tiempo: " + tiempoSegundo + "ms || Primos encontrados: " + totalPrimosSegundo);
+        String resultado = ("\tPrimer metodo -> Tiempo: " + tiempoPrimer + "ms || Primos encontrados: " + totalPrimosPrimer + "\n\n\tSegundo metodo -> Tiempo: " + tiempoSegundo + "ms || Primos encontrados: " + totalPrimosSegundo);
         return escribir(nomFichero + ".txt", resultado);
     }
 
     /**
-     * Escribe la información del String numeros en el fichero
+     * Escribe la informacion del String numeros en el fichero
      *
-     * @param nomFichero será el nombre que tomará el fichero en el que escribamos
-     * @param numeros    String con la información a escribir
+     * @param nomFichero sera el nombre que tomara el fichero en el que escribamos
+     * @param numeros    String con la informacion a escribir
      * @return booleano indicando si se ha escrito correctamente o ha habido un error con el fichero
      */
     private static boolean escribir(String nomFichero, String numeros) {

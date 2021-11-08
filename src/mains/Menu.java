@@ -8,6 +8,7 @@ import primos.AnalisisPrimoLong;
 import primos.NumPrimo;
 import procesado.GestionPrimos;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -39,38 +40,38 @@ public class Menu {
     }
 
     /**
-     * Menú
+     * Menu
      */
     public static void muestraMenu() {
         System.out.println("\n Opciones:");
-        System.out.println("\n\t1. Introduce un número y comprueba si es primo.");
-        System.out.println("\t2. Introduce un número y encuentra el primo mayor, menor o igual a tu número.");
-        System.out.println("\t3. Introduce el nombre de un fichero CSV donde leer una serie de números, se buscarán los" +
-                " números primos más grandes menores a estos números y se escribirán en un fichero con el nombre que introduzcas.");
+        System.out.println("\n\t1. Introduce un numero y comprueba si es primo.");
+        System.out.println("\t2. Introduce un numero y encuentra el primo mayor, menor o igual a tu numero.");
+        System.out.println("\t3. Introduce el nombre de un fichero CSV donde leer una serie de numeros, se buscaran los" +
+                " numeros primos mas grandes menores a estos numeros y se escribiran en un fichero con el nombre que introduzcas.");
         System.out.println("\t4. Juego de pruebas.");
         System.out.println("\t0. Exit.");
-        System.out.print("\n\t\t\tEscoje una opción,\t");
+        System.out.print("\n\t\t\tEscoje una opcion,\t");
     }
 
     /**
-     * Método para leer un entero controlando InputMismatchException
+     * Metodo para leer un entero controlando InputMismatchException
      *
      * @param mensaje a mostrar
-     * @param min     número mínimo
-     * @param max     número máximo
-     * @return número correcto
+     * @param min     numero minimo
+     * @param max     numero maximo
+     * @return numero correcto
      */
     public static int leerEntero(String mensaje, int min, int max) {
         int resultado = 0;
         boolean leido = false;
         do {
             try {
-                System.out.print(mensaje + "el número tiene que ser mayor o igual que " + min + " y menor o igual que " + max + ": ");
+                System.out.print(mensaje + "el numero tiene que ser mayor o igual que " + min + " y menor o igual que " + max + ": ");
                 resultado = teclado.nextInt();
                 leido = true;
             } catch (InputMismatchException e) {
                 System.out.println("Tienes que introducir un entero");
-                teclado.nextLine();                                        /* Vamos a la siguiente línea para continuar leyendo el resultado */
+                teclado.nextLine();                                        /* Vamos a la siguiente linea para continuar leyendo el resultado */
             } finally {
                 if (resultado > max || resultado < min) {
                     leido = false;
@@ -81,10 +82,10 @@ public class Menu {
     }
 
     /**
-     * Función que lee un número en formato String
+     * Funcion que lee un numero en formato String
      *
-     * @param mensaje será el mensaje que mostraremos por pantalla para pedir al usuario que introduzca el número
-     * @return String que contenga el número leído
+     * @param mensaje sera el mensaje que mostraremos por pantalla para pedir al usuario que introduzca el numero
+     * @return String que contenga el numero leido
      */
     public static String leerNumero(String mensaje) {
         String numero;
@@ -104,18 +105,18 @@ public class Menu {
         System.out.println("\n\tPulsa \"ENTER\" para continuar...");
         try {
             if (System.in.read() == -1)
-                System.out.println("\t\tNo deberías haber escrito nada, no se ha guardado");
+                System.out.println("\t\tNo deberias haber escrito nada, no se ha guardado");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Función que se encargará de leer un número por teclado, comprobar si es primo y mostrar el resultado
-     * de esta comprobación por pantalla
+     * Funcion que se encargara de leer un numero por teclado, comprobar si es primo y mostrar el resultado
+     * de esta comprobacion por pantalla
      */
     public static void comprobarPrimo() {
-        String numero = leerNumero("\n\tIntroduce el número a examinar: ");
+        String numero = leerNumero("\n\tIntroduce el numero a examinar: ");
         boolean primo;
         if (numero.length() < 19)
             primo = NumPrimo.esPrimo(Long.parseLong(numero));
@@ -128,21 +129,21 @@ public class Menu {
         }
 
         if (primo)
-            System.out.println("\t\tEl número introducido es primo");
+            System.out.println("\t\tEl numero introducido es primo");
         else
-            System.out.println("\t\tEl número introducido no es primo");
+            System.out.println("\t\tEl numero introducido no es primo");
 
         pausa();
     }
 
     /**
-     * Función que lee un número por teclado y encuentra el número primo más grande que sea menor o igual al número
+     * Funcion que lee un numero por teclado y encuentra el numero primo mas grande que sea menor o igual al numero
      * introducido por teclado. Muestra el resultado por pantalla con el tiempo que se ha tardado en encontrar el
-     * número primo.
+     * numero primo.
      */
     public static void encontrarPrimoMayor() {
         AnalisisPrimo analista;
-        String numero = leerNumero("\n\tIntroduce el número a examinar: ");
+        String numero = leerNumero("\n\tIntroduce el numero a examinar: ");
         if (numero.length() < 19)
             analista = new AnalisisPrimoLong(numero);
         else {
@@ -160,9 +161,9 @@ public class Menu {
     }
 
     /**
-     * Función que lee por teclado el nombre de un fichero CSV. Este CSV debe contener números y a cada número
-     * se le buscará el primo más grande que sea menor o igual al número. Luego se escribirán los resultados
-     * en un fichero cuyo nombre se leerá por teclado
+     * Funcion que lee por teclado el nombre de un fichero CSV. Este CSV debe contener numeros y a cada numero
+     * se le buscara el primo mas grande que sea menor o igual al numero. Luego se escribiran los resultados
+     * en un fichero cuyo nombre se leera por teclado
      */
     public static void ficherosPrimos() {
         AdministradorEntradaSalida gestorFicheros = new AdministradorEntradaSalida();
@@ -171,7 +172,7 @@ public class Menu {
         String[] numeros = gestorFicheros.leer(nombreFichero);
         if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
-            System.out.println("\n\tIniciando el procesado de los números... ");
+            System.out.println("\n\tIniciando el procesado de los numeros... ");
             gestorPrimos.procesarPrimos();
             System.out.print("\n\tProcesado finalizado, introduzca el nombre del fichero donde quiere guardar los resultados: ");
             nombreFichero = teclado.next();
@@ -201,21 +202,20 @@ public class Menu {
         //PRUEBA 1: Abrir fichero que no existe
         System.out.println("\nPrueba 1: Lectura fichero que no existe.");
         String[] numeros = gestorFicheros.leer("Prueba1.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             if (gestorFicheros.escribir(gestorPrimos, "Prueba1Result.csv"))
                 System.out.println("\n\tTodo ha ido correctamente");
             else
                 System.out.println("\n\tError al escribir en el fichero");
-        }
-        else {
+        } else {
             System.out.println("\t\tError, fichero no encontrado");
         }
         //PRUEBA 2: Abrir fichero vacio
         System.out.println("\nPrueba2: Lectura fichero ");
         numeros = gestorFicheros.leer("Prueba2.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             if (gestorFicheros.escribir(gestorPrimos, "Prueba2Result.csv"))
@@ -227,7 +227,7 @@ public class Menu {
         //PRUEBA 3: Fichero con contenido incorrecto
         System.out.println("\nPrueba3: Lectura fichero con contenido incorrecto");
         numeros = gestorFicheros.leer("Prueba3.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             if (gestorFicheros.escribir(gestorPrimos, "Prueba3Result.csv"))
@@ -236,10 +236,10 @@ public class Menu {
                 System.out.println("\n\tError al escribir en el fichero");
         }
 
-        //PRUEBA 4: Fichero con números negativos
-        System.out.println("\nPrueba4: Lectura fichero con números negativos ");
+        //PRUEBA 4: Fichero con numeros negativos
+        System.out.println("\nPrueba4: Lectura fichero con numeros negativos ");
         numeros = gestorFicheros.leer("Prueba4.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             if (gestorFicheros.escribir(gestorPrimos, "Prueba4Result.csv"))
@@ -251,7 +251,7 @@ public class Menu {
         //PRUEBA 5: Abrir fichero con espacios intercalados
         System.out.println("\nPrueba5: Lectura fichero con espacios intercalados.");
         numeros = gestorFicheros.leer("Prueba5.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             System.out.println(gestorPrimos);
@@ -262,13 +262,13 @@ public class Menu {
         }
 
         /*Juegos de pruebas para comprobacion de funciones*/
-        System.out.println("\n *********PRUEBAS ANÁLISIS RESULTADOS*********\n");
+        System.out.println("\n *********PRUEBAS ANaLISIS RESULTADOS*********\n");
 
-        System.out.println("---> PRUEBAS CON MÉTODO 1 esPrimo()");
-        //PRUEBA 6: Abrir fichero con todos los números de tipo long
+        System.out.println("---> PRUEBAS CON MeTODO 1 esPrimo()");
+        //PRUEBA 6: Abrir fichero con todos los numeros de tipo long
         System.out.println("\nPrueba6: Lectura fichero con numeros de tipo long.");
         numeros = gestorFicheros.leer("Prueba6.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             System.out.println(gestorPrimos);
@@ -277,10 +277,10 @@ public class Menu {
             else
                 System.out.println("\n\tError al escribir en el fichero");
         }
-        //PRUEBA 7: Abrir fichero con todos los números de tipo bigInteger
+        //PRUEBA 7: Abrir fichero con todos los numeros de tipo bigInteger
         System.out.println("\nPrueba7: Lectura fichero con numeros de tipo BigInteger.");
         numeros = gestorFicheros.leer("Prueba7.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             System.out.println(gestorPrimos);
@@ -292,7 +292,7 @@ public class Menu {
         //PRUEBA 8: Realizar fichero mixto (long + bigInteger)
         System.out.println("\nPrueba8: Lectura fichero con numeros long + BigInteger.");
         numeros = gestorFicheros.leer("Prueba8.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos();
             System.out.println(gestorPrimos);
@@ -303,12 +303,12 @@ public class Menu {
                 System.out.println("\n\tError al escribir en el fichero");
         }
 
-        //Análisis de método 2 de encontrar primo
-        System.out.println("\n---> PRUEBAS CON MÉTODO 2 esPrimo()");
-        //PRUEBA 9: Abrir fichero con todos los números de tipo long
+        //Analisis de metodo 2 de encontrar primo
+        System.out.println("\n---> PRUEBAS CON MeTODO 2 esPrimo()");
+        //PRUEBA 9: Abrir fichero con todos los numeros de tipo long
         System.out.println("\nPrueba9: Lectura fichero con numeros de tipo long.");
         numeros = gestorFicheros.leer("Prueba9.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos2();
             System.out.println(gestorPrimos);
@@ -317,10 +317,10 @@ public class Menu {
             else
                 System.out.println("\n\tError al escribir en el fichero");
         }
-        //PRUEBA 10: Abrir fichero con todos los números de tipo bigInteger
+        //PRUEBA 10: Abrir fichero con todos los numeros de tipo bigInteger
         System.out.println("\nPrueba10: Lectura fichero con numeros de tipo BigInteger.");
         numeros = gestorFicheros.leer("Prueba10.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos2();
             System.out.println(gestorPrimos);
@@ -333,7 +333,7 @@ public class Menu {
         //PRUEBA 11: Realizar fichero mixto (long + bigInteger)
         System.out.println("\nPrueba6: Lectura fichero con numeros long + BigInteger.");
         numeros = gestorFicheros.leer("Prueba11.txt");
-        if (numeros!=null) {
+        if (numeros != null) {
             GestionPrimos gestorPrimos = new GestionPrimos(numeros);
             gestorPrimos.procesarPrimos2();
             System.out.println(gestorPrimos);
@@ -348,10 +348,9 @@ public class Menu {
         //PRUEBA 12: Prueba para comparativas de tiempos con los dos algoritmos de encontrarPrimo
         System.out.println("\n---> PRUEBA FUNCION COMPARATIVA");
         System.out.println("\nPrueba12: Comparativa tiempos para ambos algoritmos de encontrarPrimo.");
-        Comparador comp = new Comparador();
         BigInteger num1 = new BigInteger("0");
         BigInteger num2 = new BigInteger("265000");
-        boolean encontrado=comp.comparaTiempo(num1, num2, "Prueba12Result");
+        boolean encontrado = Comparador.comparaTiempo(num1, num2, "Prueba12Result");
 
     }
 

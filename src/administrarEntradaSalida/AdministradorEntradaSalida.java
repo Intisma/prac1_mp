@@ -10,17 +10,17 @@ import java.util.Scanner;
 public class AdministradorEntradaSalida {
 
     /**
-     * Constructor vacío
+     * Constructor vacio
      */
     public AdministradorEntradaSalida() {
 
     }
 
     /**
-     * Lee información de un fichero con formato CSV
+     * Lee informacion de un fichero con formato CSV
      *
-     * @param nomFichero nombre del fichero del que se leera la información
-     * @return devuelve una lista de Strings con los números leídos del fichero
+     * @param nomFichero nombre del fichero del que se leera la informacion
+     * @return devuelve una lista de Strings con los numeros leidos del fichero
      */
     public String[] leer(String nomFichero) {
         int nums = 0, j = 0;
@@ -49,11 +49,11 @@ public class AdministradorEntradaSalida {
     }
 
     /**
-     * Escribe la información almacenada en un objeto de clase GestionPrimos en un fichero nuevo que tendrá
-     * el nombre introducido por parámetro
+     * Escribe la informacion almacenada en un objeto de clase GestionPrimos en un fichero nuevo que tendra
+     * el nombre introducido por parametro
      *
-     * @param gestor     será el parámetro del que obtendremos la información a escribir
-     * @param nomFichero será el nombre que tomará el fichero en el que escribamos
+     * @param gestor     sera el parametro del que obtendremos la informacion a escribir
+     * @param nomFichero sera el nombre que tomara el fichero en el que escribamos
      * @return booleano indicando si se ha escrito correctamente o ha habido un error con el fichero
      */
     public boolean escribir(GestionPrimos gestor, String nomFichero) {

@@ -5,13 +5,13 @@ import java.util.Random;
 
 public class NumPrimo {
 
-    // El generador de números aleatorios para el segundo método de comprobar si un número es primo
+    // El generador de numeros aleatorios para el segundo metodo de comprobar si un numero es primo
     private static final Random rnd = new Random();
 
     /**
-     * Comprobará si el número introducido por parámetro es o no primo
+     * Comprobara si el numero introducido por parametro es o no primo
      *
-     * @param num el número que comprobaremos si es primo
+     * @param num el numero que comprobaremos si es primo
      * @return booleano indicando si es o no primo
      */
     public static boolean esPrimo(long num) {
@@ -22,7 +22,7 @@ public class NumPrimo {
         else if (num != 2) {
             if (num % 2 == 0)
                 primo = false;
-            else{
+            else {
                 for (int i = 3; i <= max; i += 2) {
                     if (num % i == 0) {
                         primo = false;
@@ -35,9 +35,9 @@ public class NumPrimo {
     }
 
     /**
-     * Comprobará si el número introducido por parámetro es o no primo
+     * Comprobara si el numero introducido por parametro es o no primo
      *
-     * @param num el número que comprobaremos si es primo
+     * @param num el numero que comprobaremos si es primo
      * @return booleano indicando si es o no primo
      */
     public static boolean esPrimo(BigInteger num) {
@@ -61,11 +61,11 @@ public class NumPrimo {
     }
 
     /**
-     * Método que comprueba con el test de miller si el número introducido es primo
+     * Metodo que comprueba con el test de miller si el numero introducido es primo
      *
-     * @param numero    es el número que comprobaremos si es primo
-     * @param precision cuanto mayor sea el número, más buena será la predicción
-     * @return true si el número es primo, false si es compuesto
+     * @param numero    es el numero que comprobaremos si es primo
+     * @param precision cuanto mayor sea el numero, mas buena sera la prediccion
+     * @return true si el numero es primo, false si es compuesto
      */
     public static boolean esPrimo2(BigInteger numero, int precision) {
         if (numero.compareTo(BigInteger.ONE) < 1)
@@ -85,10 +85,10 @@ public class NumPrimo {
     }
 
     /**
-     * Método que comprueba con el test de miller si el número introducido es primo
+     * Metodo que comprueba con el test de miller si el numero introducido es primo
      *
-     * @param numero es el número que comprobaremos si es primo
-     * @return true si el número es primo, false si es compuesto
+     * @param numero es el numero que comprobaremos si es primo
+     * @return true si el numero es primo, false si es compuesto
      */
     public static boolean esPrimo2(BigInteger numero) {
         if (numero.compareTo(BigInteger.ONE) < 1)
@@ -108,11 +108,11 @@ public class NumPrimo {
     }
 
     /**
-     * Método que comprueba con el test de miller si el número introducido es primo
+     * Metodo que comprueba con el test de miller si el numero introducido es primo
      *
-     * @param lNumero   es el número que comprobaremos si es primo
-     * @param precision cuanto mayor sea el número, más buena será la predicción
-     * @return true si el número es primo, false si es compuesto
+     * @param lNumero   es el numero que comprobaremos si es primo
+     * @param precision cuanto mayor sea el numero, mas buena sera la prediccion
+     * @return true si el numero es primo, false si es compuesto
      */
     public static boolean esPrimo2(long lNumero, int precision) {
         BigInteger numero = new BigInteger(Long.toString(lNumero));
@@ -133,10 +133,10 @@ public class NumPrimo {
     }
 
     /**
-     * Método que comprueba con el test de miller si el número introducido es primo
+     * Metodo que comprueba con el test de miller si el numero introducido es primo
      *
-     * @param lNumero es el número que comprobaremos si es primo
-     * @return true si el número es primo, false si es compuesto
+     * @param lNumero es el numero que comprobaremos si es primo
+     * @return true si el numero es primo, false si es compuesto
      */
     public static boolean esPrimo2(long lNumero) {
         BigInteger numero = new BigInteger(Long.toString(lNumero));
@@ -157,11 +157,11 @@ public class NumPrimo {
     }
 
     /**
-     * Función de miller.
+     * Funcion de miller.
      *
-     * @param aleatorio número aleatorio calculado anteriormente
-     * @param numero    número a comprobar si es primo
-     * @return false si el número es compuesto, true si puede ser primo
+     * @param aleatorio numero aleatorio calculado anteriormente
+     * @param numero    numero a comprobar si es primo
+     * @return false si el numero es compuesto, true si puede ser primo
      */
     private static boolean millerTest(BigInteger aleatorio, BigInteger numero) {
         BigInteger numMenosUno = numero.subtract(BigInteger.ONE);
